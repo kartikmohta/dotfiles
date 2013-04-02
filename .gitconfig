@@ -1,0 +1,22 @@
+[user]
+  name = Kartik Mohta
+  email = kartikmohta@gmail.com
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[svn]
+	rmdir = true
+[push]
+  default = current
+[log]
+  date = local
+[alias]
+  st = status
+  co = checkout
+  di = diff
+  ci = commit
+[core]
+  excludesfile = /home/kartikmohta/.gitignore
+[sendemail]
+  envelopesender = auto
