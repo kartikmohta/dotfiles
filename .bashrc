@@ -117,7 +117,9 @@ export EDITOR="vim"
 # ROS
 source /opt/ros/groovy/setup.bash
 export ROS_PACKAGE_PATH=$HOME/programs/ros:$ROS_PACKAGE_PATH
-export ROS_WORKSPACE=$HOME/programs/ros
 #export ROS_LINK_FLAGS="-Wl,--as-needed"
 
 export MEX="/usr/local/bin/mex"
+
+# colorgcc
+export PATH="/usr/lib/colorgcc/bin:$PATH"
