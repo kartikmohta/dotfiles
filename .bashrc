@@ -115,11 +115,17 @@ export EDITOR="vim"
 #PS1="\[\033[G\]$PS1"
 
 # ROS
-source /opt/ros/groovy/setup.bash
-export ROS_PACKAGE_PATH=$HOME/programs/ros:$ROS_PACKAGE_PATH
-#export ROS_LINK_FLAGS="-Wl,--as-needed"
+if [ -f /opt/ros/groovy/setup.bash ]; then
+  source /opt/ros/groovy/setup.bash
+  export ROS_PACKAGE_PATH=$HOME/programs/ros:$ROS_PACKAGE_PATH
+  #export ROS_LINK_FLAGS="-Wl,--as-needed"
+fi
 
-export MEX="/usr/local/bin/mex"
+if [ -f /usr/local/bin/mex ]; then
+  export MEX="/usr/local/bin/mex"
+fi
 
 # colorgcc
-export PATH="/usr/lib/colorgcc/bin:$PATH"
+if [ -d /usr/lib/colorgcc/bin ]; then
+  export PATH="/usr/lib/colorgcc/bin:$PATH"
+fi

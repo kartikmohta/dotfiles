@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/kartikmohta/programs/ppr_code/MPU6050_USB_working/src'
-let g:netrw_dirhist_2='/home/kartikmohta/programs/quad/ros/send_motor_command/src/send_motor_command'
-let g:netrw_dirhist_3='/home/kartikmohta/programs/ros/quadrotor/quadrotor_msgs/include/quadrotor_msgs'
-let g:netrw_dirhist_4='/home/kartikmohta/programs/ppr_code/common/src'
-let g:netrw_dirhist_5='/home/kartikmohta/programs/ppr_code/common/m4/inc'
-let g:netrw_dirhist_6='/home/kartikmohta/programs/vicon/libvicon_driver/vicon_sdk'
-let g:netrw_dirhist_7='/home/kartikmohta/programs/vicon/libvicon_driver/build/CMakeFiles'
