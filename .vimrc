@@ -6,6 +6,7 @@ set tabstop=2
 set softtabstop=2
 set expandtab
 set hlsearch incsearch
+set ignorecase smartcase
 set infercase
 
 " sensible.vim
@@ -58,7 +59,7 @@ set spellfile=~/.vimspell.add
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
-  au FileType tex set spell
+  au FileType plaintex,tex set spell
 endif
 
 if has("gui_gtk2")
