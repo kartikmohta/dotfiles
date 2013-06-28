@@ -12,9 +12,6 @@ HISTCONTROL=ignoredups:ignorespace
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# fix minor spelling mistakes
-shopt -s cdspell dirspell
-
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
 HISTFILESIZE=20000
@@ -110,6 +107,14 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 export EDITOR="vim"
+
+# For new tab in gnome-terminal to open in same directory as the previous one
+# See: https://bugzilla.gnome.org/show_bug.cgi?id=697475
+case "$COLORTERM" in
+  gnome-terminal)
+    . /etc/profile.d/vte.sh
+    ;;
+esac
 
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
 #PS1="\[\033[G\]$PS1"
