@@ -60,6 +60,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
   au FileType plaintex,tex set spell
+  au FileType plaintex,tex syntax spell toplevel
 endif
 
 if has("gui_gtk2")
