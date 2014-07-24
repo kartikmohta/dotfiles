@@ -22,3 +22,5 @@
   envelopesender = auto
 [diff]
   algorithm = histogram
+[fetch]
+  prune = true

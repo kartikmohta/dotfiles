@@ -42,7 +42,6 @@ Icon?
 Thumbs.db
 
 # Linux
-.*
 !.gitignore
 *~
 

@@ -20,3 +20,5 @@ alias overo10="ssh root@192.168.129.159"
 alias overo11="ssh root@192.168.129.160"
 alias overo12="ssh root@192.168.129.161"
 alias lima="ssh kartikmohta@192.168.129.138"
+
+alias matlabnd="matlab -nodesktop -nosplash"

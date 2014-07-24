@@ -35,6 +35,13 @@ if !&sidescrolloff
   set sidescrolloff=5
 endif
 set display+=lastline
+" Make it obvious where 120 characters is
+set textwidth=120
+set colorcolumn=+1
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+set switchbuf=usetab,newtab
 
 if &encoding ==# 'latin1' && has('gui_running')
   set encoding=utf-8
