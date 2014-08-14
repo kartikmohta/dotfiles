@@ -38,6 +38,7 @@ set display+=lastline
 " Make it obvious where 120 characters is
 set textwidth=120
 set colorcolumn=+1
+set formatoptions-=t
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
