@@ -1,4 +1,19 @@
 set nocompatible
+filetype off
+
+" Vundle
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'godlygeek/csapprox'
+Plugin 'antoyo/vim-licenses'
+Plugin 'msanders/snipmate.vim'
+Plugin 'Shougo/neocomplete.vim'
+
+call vundle#end()
+
 set ttyfast
 set lazyredraw
 set shiftwidth=2
@@ -110,3 +125,14 @@ imap <silent> <End>  <C-o>g<End>
 " ROS launch files
 autocmd BufRead,BufNewFile *.launch setfiletype xml
 autocmd BufRead,BufNewFile *.machine setfiletype xml
+
+let g:licenses_authors_name = 'Kartik Mohta <kartikmohta@gmail.com>'
+
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
