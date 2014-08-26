@@ -52,6 +52,7 @@ endif
 set display+=lastline
 " Make it obvious where 120 characters is
 set textwidth=120
+au FileType gitcommit setlocal tw=72
 set colorcolumn=+1
 set formatoptions-=t
 " Open new split panes to right and bottom, which feels more natural
@@ -79,12 +80,10 @@ set t_Co=256
 set background=dark
 colorscheme koehler
 set spellfile=~/.vimspell.add
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif
-  au FileType plaintex,tex set spell
-  au FileType plaintex,tex syntax spell toplevel
-endif
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+      \| exe "normal! g'\"" | endif
+au FileType plaintex,tex set spell
+au FileType plaintex,tex syntax spell toplevel
 
 if has("gui_gtk2")
   set guifont=Monospace\ 11,Fixed\ 11
@@ -93,14 +92,12 @@ endif
 " Remove spaces at end of lines
 " http://stackoverflow.com/questions/356126/how-can-you-automatically-remove-trailing-whitespace-in-vim/1618401#1618401
 fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
 endfun
-if has("autocmd")
-  au BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-endif
+au BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " Highlight spaces at the end of lines
 match Todo /\s\+$/
@@ -136,3 +133,6 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Set ft=tex as default for .tex files
+let g:tex_flavor = "latex"

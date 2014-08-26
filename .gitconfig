@@ -7,8 +7,6 @@
   branch = auto
 [svn]
   rmdir = true
-[push]
-  default = current
 [log]
   date = local
 [alias]
@@ -24,3 +22,5 @@
   algorithm = histogram
 [fetch]
   prune = true
+[push]
+  default = upstream
