@@ -76,6 +76,7 @@ endif
 syntax enable
 filetype plugin indent on
 set cindent
+set cinoptions=h1,l1,g1,t0,i2s,(0,w1,W2
 set t_Co=256
 set background=dark
 colorscheme koehler
