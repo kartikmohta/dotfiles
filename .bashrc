@@ -110,27 +110,28 @@ export EDITOR="vim"
 
 # For new tab in gnome-terminal to open in same directory as the previous one
 # See: https://bugzilla.gnome.org/show_bug.cgi?id=697475
-case "$COLORTERM" in
-  gnome-terminal)
-    . /etc/profile.d/vte.sh
-    ;;
-esac
+. /etc/profile.d/vte.sh
 
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
 #PS1="\[\033[G\]$PS1"
 
 # ROS
-if [ -f /opt/ros/groovy/setup.bash ]; then
-  source /opt/ros/groovy/setup.bash
-  export ROS_PACKAGE_PATH=$HOME/programs/ros:$ROS_PACKAGE_PATH
-  #export ROS_LINK_FLAGS="-Wl,--as-needed"
+ROSDISTRO=indigo
+if [ -f /opt/ros/$ROSDISTRO/setup.bash ]; then
+  #source /opt/ros/$ROSDISTRO/setup.bash
+  source $HOME/programs/ros/catkin_ws/devel/setup.bash
+  export ROS_PACKAGE_PATH=$HOME/programs/ros/rosbuild_ws:$ROS_PACKAGE_PATH
+  export ROS_WORKSPACE=$HOME/programs/ros
 fi
+unset ROSDISTRO
 
 if [ -f /usr/local/bin/mex ]; then
+  export MATLAB_ROOT="/opt/MATLAB/R2014a"
   export MEX="/usr/local/bin/mex"
 fi
 
-# colorgcc
-if [ -d /usr/lib/colorgcc/bin ]; then
-  export PATH="/usr/lib/colorgcc/bin:$PATH"
-fi
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+export CFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
+export CXXFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
+export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,--no-undefined,-z,relro,-z,now"

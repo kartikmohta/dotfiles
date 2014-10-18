@@ -22,3 +22,5 @@ alias overo12="ssh root@192.168.129.161"
 alias lima="ssh kartikmohta@192.168.129.138"
 
 alias matlabnd="matlab -nodesktop -nosplash"
+alias rqt_reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
+alias cmk="catkin_make --only-pkg-with-deps"
