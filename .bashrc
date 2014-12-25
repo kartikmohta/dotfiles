@@ -132,6 +132,7 @@ fi
 
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+export CPPFLAGS="-D_FORTIFY_SOURCE=2"
 export CFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
 export CXXFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
-export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,--no-undefined,-z,relro,-z,now"
+export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,--no-undefined,-z,relro,-z,now,--hash-style=gnu -pthread"
