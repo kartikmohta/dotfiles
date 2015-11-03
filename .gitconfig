@@ -18,9 +18,7 @@
   excludesfile = /home/kartikmohta/.gitignore
 [sendemail]
   envelopesender = auto
-[diff]
-  algorithm = histogram
 [fetch]
   prune = true
 [push]
-  default = upstream
+  default = simple
