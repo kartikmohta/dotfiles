@@ -2,9 +2,11 @@
   name = Kartik Mohta
   email = kartikmohta@gmail.com
 [color]
-  diff = auto
-  status = auto
-  branch = auto
+  ui = auto
+[color "diff"]
+  meta = yellow bold
+[color "status"]
+  untracked = yellow
 [svn]
   rmdir = true
 [log]
