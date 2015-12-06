@@ -3,8 +3,6 @@
   email = kartikmohta@gmail.com
 [color]
   ui = auto
-[color "diff"]
-  meta = yellow bold
 [color "status"]
   untracked = yellow
 [svn]

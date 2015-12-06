@@ -116,11 +116,9 @@ export EDITOR="vim"
 #PS1="\[\033[G\]$PS1"
 
 # ROS
-ROSDISTRO=indigo
+ROSDISTRO=jade
 if [ -f /opt/ros/$ROSDISTRO/setup.bash ]; then
-  #source /opt/ros/$ROSDISTRO/setup.bash
-  source $HOME/programs/ros/catkin_ws/devel/setup.bash
-  export ROS_PACKAGE_PATH=$HOME/programs/ros/rosbuild_ws:$ROS_PACKAGE_PATH
+  source /opt/ros/$ROSDISTRO/setup.bash
   export ROS_WORKSPACE=$HOME/programs/ros
 fi
 unset ROSDISTRO
@@ -138,3 +136,6 @@ export CXXFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong"
 export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,--no-undefined,-z,relro,-z,now,--hash-style=gnu -pthread"
 
 export ROS_PARALLEL_JOBS="-j2 -l2"
+
+export ROSWS_HOME_DIR=/home/kartikmohta/programs/ros
+source /home/kartikmohta/programs/ros_scripts/rosws_switch/rosws_switch.complete
