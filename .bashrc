@@ -115,18 +115,6 @@ export EDITOR="vim"
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
 #PS1="\[\033[G\]$PS1"
 
-# ROS
-ROSDISTRO=jade
-if [ -f /opt/ros/$ROSDISTRO/setup.bash ]; then
-  source /opt/ros/$ROSDISTRO/setup.bash
-  export ROS_WORKSPACE=$HOME/programs/ros
-fi
-unset ROSDISTRO
-
-if [ -f /usr/local/bin/mex ]; then
-  export MATLAB_ROOT="/opt/MATLAB/R2014a"
-  export MEX="/usr/local/bin/mex"
-fi
 
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -135,7 +123,21 @@ export CFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong"
 export CXXFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong"
 export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,--no-undefined,-z,relro,-z,now,--hash-style=gnu -pthread"
 
-export ROS_PARALLEL_JOBS="-j2 -l2"
+# ROS
+ROSDISTRO=jade
+if [ -f /opt/ros/$ROSDISTRO/setup.bash ]; then
+  source /opt/ros/$ROSDISTRO/setup.bash
+  export ROS_WORKSPACE=$HOME/programs/ros
+fi
+unset ROSDISTRO
+
+# Matlab
+if [ -f /usr/local/bin/mex ]; then
+  export MATLAB_ROOT="/opt/MATLAB/R2014a"
+  export MEX="/usr/local/bin/mex"
+fi
+
+
 
 export ROSWS_HOME_DIR=/home/kartikmohta/programs/ros
 source /home/kartikmohta/programs/ros_scripts/rosws_switch/rosws_switch.complete
