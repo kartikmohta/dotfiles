@@ -50,10 +50,12 @@ if !&sidescrolloff
   set sidescrolloff=5
 endif
 set display+=lastline
+
 set textwidth=80
 au FileType gitcommit setlocal tw=72
 set colorcolumn=+1
 set formatoptions-=t
+set mouse=
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -71,7 +73,7 @@ if &listchars ==# 'eol:$'
 endif
 
 "set rulerformat=%l/%L,%c%V%=%P
-"set number
+" set number
 syntax enable
 filetype plugin indent on
 set cindent
@@ -110,18 +112,25 @@ set nofoldenable
 set linebreak
 
 " Move through wrapped lines
-map  <silent> <Up>   gk
-imap <silent> <Up>   <C-o>gk
-map  <silent> <Down> gj
-imap <silent> <Down> <C-o>gj
-map  <silent> <home> g<home>
-imap <silent> <home> <C-o>g<home>
-map  <silent> <End>  g<End>
-imap <silent> <End>  <C-o>g<End>
+noremap  <buffer> <silent> <Up>   gk
+inoremap <buffer> <silent> <Up>   <C-o>gk
+noremap  <buffer> <silent> <Down> gj
+inoremap <buffer> <silent> <Down> <C-o>gj
+noremap  <buffer> <silent> <Home> g<Home>
+inoremap <buffer> <silent> <Home> <C-o>g<Home>
+noremap  <buffer> <silent> <End>  g<End>
+inoremap <buffer> <silent> <End>  <C-o>g<End>
 
 " ROS launch files
 autocmd BufRead,BufNewFile *.launch setfiletype xml
 autocmd BufRead,BufNewFile *.machine setfiletype xml
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 let g:licenses_authors_name = 'Kartik Mohta <kartikmohta@gmail.com>'
 
@@ -141,28 +150,24 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+	let g:neocomplete#sources#omni#input_patterns = {}
 endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+if !exists('g:neocomplete#force_omni_input_patterns')
+	let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
+let g:neocomplete#sources#omni#input_patterns.cpp ='[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 
 
 " Set ft=tex as default for .tex files
 let g:tex_flavor = "latex"
 
 set tags=./tags;
-map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
-imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+map <C-K> :pyf /usr/share/clang/clang-format.py<CR>
+imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<CR>
 
 map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
 imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
