@@ -31,10 +31,11 @@ change_master_uri_fla()
 
 my_ip()
 {
-  echo $(ip route get 8.8.8.8 | cut -d' '  -f 8 | head -1)
-  if [ -z "$ROS_IP" ]; then
-    echo $(ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
+  local IP=$(ip route get 8.8.8.8 | cut -d' '  -f 8 | head -1)
+  if [ -z "$IP" ]; then
+    local IP=$(ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
   fi
+  echo $IP
 }
 
 export ROS_IP=$(my_ip)
