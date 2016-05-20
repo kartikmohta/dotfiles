@@ -131,6 +131,8 @@ if [ -f /opt/ros/$ROSDISTRO/setup.bash ]; then
 fi
 unset ROSDISTRO
 
+export ROS_IP=$(my_ip)
+
 # Matlab
 if [ -f /usr/local/bin/mex ]; then
   export MATLAB_ROOT="/opt/MATLAB/R2014a"

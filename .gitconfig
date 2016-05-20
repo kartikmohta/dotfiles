@@ -1,6 +1,7 @@
 [user]
   name = Kartik Mohta
   email = kartikmohta@gmail.com
+  signingkey = 0x42AE2262EC5462E4
 [color]
   ui = auto
 [color "status"]
