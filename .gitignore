@@ -49,3 +49,8 @@ Thumbs.db
 .*.sw[a-z]
 *.un~
 Session.vim
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
