@@ -169,5 +169,12 @@ set tags=./tags;
 map <C-K> :pyf /usr/share/clang/clang-format.py<CR>
 imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<CR>
 
-map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
-imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
+
+" Make Vim recognize XTerm escape sequences for Arrow keys combined with
+" modifiers such as Shift, Control, and Alt.  See http://superuser.com/a/402084.
+if &term =~ '^screen'
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+endif
