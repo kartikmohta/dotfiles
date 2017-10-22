@@ -10,7 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'antoyo/vim-licenses'
 Plugin 'msanders/snipmate.vim'
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
@@ -111,15 +111,18 @@ set nofoldenable
 
 set linebreak
 
+" Use the standard system clipboard by default
+" set clipboard=unnamedplus
+
 " Move through wrapped lines
-noremap  <buffer> <silent> <Up>   gk
-inoremap <buffer> <silent> <Up>   <C-o>gk
-noremap  <buffer> <silent> <Down> gj
-inoremap <buffer> <silent> <Down> <C-o>gj
-noremap  <buffer> <silent> <Home> g<Home>
-inoremap <buffer> <silent> <Home> <C-o>g<Home>
-noremap  <buffer> <silent> <End>  g<End>
-inoremap <buffer> <silent> <End>  <C-o>g<End>
+noremap  <silent> <Up>   gk
+inoremap <silent> <Up>   <C-o>gk
+noremap  <silent> <Down> gj
+inoremap <silent> <Down> <C-o>gj
+noremap  <silent> <Home> g<Home>
+inoremap <silent> <Home> <C-o>g<Home>
+noremap  <silent> <End>  g<End>
+inoremap <silent> <End>  <C-o>g<End>
 
 " ROS launch files
 autocmd BufRead,BufNewFile *.launch setfiletype xml
@@ -134,40 +137,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 let g:licenses_authors_name = 'Kartik Mohta <kartikmohta@gmail.com>'
 
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-	let g:neocomplete#sources#omni#input_patterns = {}
-endif
-if !exists('g:neocomplete#force_omni_input_patterns')
-	let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
-let g:neocomplete#sources#omni#input_patterns.cpp ='[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
-
 " Set ft=tex as default for .tex files
 let g:tex_flavor = "latex"
 
 set tags=./tags;
-map <C-K> :pyf /usr/share/clang/clang-format.py<CR>
-imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<CR>
+map <C-K> :py3f /usr/share/clang/clang-format.py<CR>
+imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<CR>
 
 
 " Make Vim recognize XTerm escape sequences for Arrow keys combined with

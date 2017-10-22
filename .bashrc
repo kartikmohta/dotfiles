@@ -126,12 +126,12 @@ export EDITOR="vim"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 export CPPFLAGS="-D_FORTIFY_SOURCE=2"
-export CFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong"
-export CXXFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong"
+export CFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong -fno-plt"
+export CXXFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong -fno-plt"
 export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,--no-undefined,-z,relro,-z,now,--hash-style=gnu -pthread"
 
 # ROS
-ROSDISTRO=kinetic
+ROSDISTRO=lunar
 if [ -f /opt/ros/$ROSDISTRO/setup.bash ]; then
   source /opt/ros/$ROSDISTRO/setup.bash
   export ROS_WORKSPACE=$HOME/programs/ros
@@ -145,11 +145,15 @@ fi
 
 # Matlab
 if [ -f /usr/local/bin/mex ]; then
-  export MATLAB_ROOT="/opt/MATLAB/R2014a"
+  export MATLAB_ROOT="/opt/MATLAB/R2017a"
   export MEX="/usr/local/bin/mex"
 fi
 
 
+# Gazebo
+if [ -f /usr/share/gazebo/setup.sh ]; then
+  source /usr/share/gazebo/setup.sh
+fi
 
-export ROSWS_HOME_DIR=/home/kartikmohta/programs/ros
-source /home/kartikmohta/programs/ros_scripts/rosws_switch/rosws_switch.complete
+export ROSWS_HOME_DIR=$HOME/programs/ros
+source $HOME/programs/ros_scripts/rosws_switch/rosws_switch.complete

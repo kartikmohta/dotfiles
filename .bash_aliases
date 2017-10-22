@@ -8,14 +8,13 @@ alias l='ls -CF'
 alias vpsi="ssh kartikmohta@vps.igeek.in"
 alias vpss="ssh sportx@vps.sportx.in"
 alias eniac="ssh -X kmohta@eniac.seas.upenn.edu"
-alias mrsl="ssh kartikmohta@mrsl.grasp.upenn.edu"
 alias df="df -Th"
 alias fgfs="fgfs --enable-terrasync --terrasync-dir=/mnt/Data/flightgear/data/Scenery --fg-scenery=/mnt/Data/flightgear/data/Scenery"
 
 alias matlabnd="matlab -nodesktop -nosplash"
+
 alias rqt_reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
-alias cmk="catkin_make -DCMAKE_BUILD_TYPE=RelWithDebInfo"
-alias cmki="catkin_make_isolated -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+alias rqt_runtime_monitor="rosrun rqt_runtime_monitor rqt_runtime_monitor"
 
 alias julia="PYTHON=/usr/bin/python2 julia"
 
