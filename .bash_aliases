@@ -6,7 +6,7 @@ alias ll='ls -lh'
 alias la='ls -A'
 alias l='ls -CF'
 alias vpsi="ssh kartikmohta@vps.igeek.in"
-alias vpss="ssh sportx@vps.sportx.in"
+alias vpss="ssh kartikmohta@dev.sportx.in"
 alias eniac="ssh -X kmohta@eniac.seas.upenn.edu"
 alias df="df -Th"
 alias fgfs="fgfs --enable-terrasync --terrasync-dir=/mnt/Data/flightgear/data/Scenery --fg-scenery=/mnt/Data/flightgear/data/Scenery"
@@ -17,6 +17,16 @@ alias rqt_reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
 alias rqt_runtime_monitor="rosrun rqt_runtime_monitor rqt_runtime_monitor"
 
 alias julia="PYTHON=/usr/bin/python2 julia"
+
+change_master_uri()
+{
+  if [ -z "$1" ]; then
+    echo "Specify the master ip/hostname"
+  else
+    export ROS_MASTER_URI="http://${1}:11311"
+    echo "Set ROS_MASTER_URI to ${ROS_MASTER_URI}"
+  fi
+}
 
 change_master_uri_fla()
 {

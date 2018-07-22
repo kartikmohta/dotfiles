@@ -7,12 +7,18 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'godlygeek/csapprox'
+" Plugin 'godlygeek/csapprox'
 Plugin 'antoyo/vim-licenses'
-Plugin 'msanders/snipmate.vim'
 Plugin 'Valloric/YouCompleteMe'
+" Plugin 'rust-lang/rust.vim'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()
+
+if has('nvim') || has('termguicolors')
+  set termguicolors
+endif
 
 set ttyfast
 set lazyredraw
@@ -94,12 +100,19 @@ endif
 " Remove spaces at end of lines
 " http://stackoverflow.com/questions/356126/how-can-you-automatically-remove-trailing-whitespace-in-vim/1618401#1618401
 fun! <SID>StripTrailingWhitespaces()
+  " Only strip if the b:noStripeWhitespace variable isn't set
+  if exists('b:noStripWhitespace')
+    return
+  endif
+
   let l = line(".")
   let c = col(".")
   %s/\s\+$//e
   call cursor(l, c)
 endfun
-au BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+" au BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+au BufWritePre * :call <SID>StripTrailingWhitespaces()
+au FileType diff let b:noStripWhitespace=1
 
 " Highlight spaces at the end of lines
 match Todo /\s\+$/
@@ -141,8 +154,8 @@ let g:licenses_authors_name = 'Kartik Mohta <kartikmohta@gmail.com>'
 let g:tex_flavor = "latex"
 
 set tags=./tags;
-map <C-K> :py3f /usr/share/clang/clang-format.py<CR>
-imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<CR>
+autocmd FileType c,cpp,cuda map <C-K> :py3f /usr/share/clang/clang-format.py<CR>
+autocmd FileType c,cpp,cuda imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<CR>
 
 
 " Make Vim recognize XTerm escape sequences for Arrow keys combined with
@@ -153,3 +166,6 @@ if &term =~ '^screen'
   execute "set <xRight>=\e[1;*C"
   execute "set <xLeft>=\e[1;*D"
 endif
+
+" Autoload Doxygen highlighting
+let g:load_doxygen_syntax = 1

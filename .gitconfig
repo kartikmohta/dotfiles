@@ -27,3 +27,5 @@
   algorithm = histogram
   compactionHeuristic = true
   renames = copies
+[submodule]
+  recurse = true

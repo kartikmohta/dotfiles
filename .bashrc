@@ -157,3 +157,6 @@ fi
 
 export ROSWS_HOME_DIR=$HOME/programs/ros
 source $HOME/programs/ros_scripts/rosws_switch/rosws_switch.complete
+
+# Always prompt for GPG password from terminal
+export GPG_TTY=$(tty)
