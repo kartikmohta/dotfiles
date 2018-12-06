@@ -1,20 +1,31 @@
 set nocompatible
 filetype off
 
-" Vundle
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" dein.vim
+" Required:
+set runtimepath+=/home/kartikmohta/.vim/bundle/repos/github.com/Shougo/dein.vim
 
-Plugin 'gmarik/Vundle.vim'
-" Plugin 'godlygeek/csapprox'
-Plugin 'antoyo/vim-licenses'
-Plugin 'Valloric/YouCompleteMe'
-" Plugin 'rust-lang/rust.vim'
-Plugin 'vim-scripts/DoxygenToolkit.vim'
-Plugin 'sheerun/vim-polyglot'
+" Required:
+if dein#load_state('/home/kartikmohta/.vim/bundle')
+  call dein#begin('/home/kartikmohta/.vim/bundle')
 
-call vundle#end()
+  " Let dein manage dein
+  " Required:
+  call dein#add('/home/kartikmohta/.vim/bundle/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  call dein#add('antoyo/vim-licenses')
+  call dein#add('vim-scripts/DoxygenToolkit.vim')
+  call dein#add('sheerun/vim-polyglot')
+
+  call dein#add('Valloric/YouCompleteMe', {'build': './install.py --clang-completer --system-boost --system-libclang --ninja --clang-tidy --rust-completer'})
+  call dein#add('Chiel92/vim-autoformat')
+  call dein#add('chaoren/vim-wordmotion')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
 if has('nvim') || has('termguicolors')
   set termguicolors
@@ -153,10 +164,18 @@ let g:licenses_authors_name = 'Kartik Mohta <kartikmohta@gmail.com>'
 " Set ft=tex as default for .tex files
 let g:tex_flavor = "latex"
 
-set tags=./tags;
-autocmd FileType c,cpp,cuda map <C-K> :py3f /usr/share/clang/clang-format.py<CR>
-autocmd FileType c,cpp,cuda imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<CR>
+"set tags=./tags;
+"autocmd FileType c,cpp,cuda map <C-K> :py3f /usr/share/clang/clang-format.py<CR>
+"autocmd FileType c,cpp,cuda imap <C-K> <c-o>:py3f /usr/share/clang/clang-format.py<CR>
+noremap <C-K> :Autoformat<CR>
 
+" YouCompleteMe
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_collect_identifiers_from_tags_files = 0
+" map <C-]> :YcmCompleter GoToImprecise<CR>
+let g:ycm_path_to_python_interpreter="/usr/bin/python"
+let g:ycm_global_ycm_extra_conf="/home/kartikmohta/.ycm_extra_conf.py"
 
 " Make Vim recognize XTerm escape sequences for Arrow keys combined with
 " modifiers such as Shift, Control, and Alt.  See http://superuser.com/a/402084.
@@ -169,3 +188,7 @@ endif
 
 " Autoload Doxygen highlighting
 let g:load_doxygen_syntax = 1
+
+" Program to use for evaluating Python code. Setting this makes startup faster.
+let g:python_host_prog="python2"
+let g:python3_host_prog="python3"
