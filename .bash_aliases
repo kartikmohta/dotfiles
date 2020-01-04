@@ -5,18 +5,12 @@ alias grep="grep --color -n"
 alias ll='ls -lh'
 alias la='ls -A'
 alias l='ls -CF'
-alias vpsi="ssh kartikmohta@vps.igeek.in"
-alias vpss="ssh kartikmohta@dev.sportx.in"
-alias eniac="ssh -X kmohta@eniac.seas.upenn.edu"
 alias df="df -Th"
-alias fgfs="fgfs --enable-terrasync --terrasync-dir=/mnt/Data/flightgear/data/Scenery --fg-scenery=/mnt/Data/flightgear/data/Scenery"
 
 alias matlabnd="matlab -nodesktop -nosplash"
 
 alias rqt_reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
 alias rqt_runtime_monitor="rosrun rqt_runtime_monitor rqt_runtime_monitor"
-
-alias julia="PYTHON=/usr/bin/python2 julia"
 
 change_master_uri()
 {
@@ -24,16 +18,6 @@ change_master_uri()
     echo "Specify the master ip/hostname"
   else
     export ROS_MASTER_URI="http://${1}:11311"
-    echo "Set ROS_MASTER_URI to ${ROS_MASTER_URI}"
-  fi
-}
-
-change_master_uri_fla()
-{
-  if [ -z "$1" ]; then
-    echo "Specify the robot number ('n' in fla[n])"
-  else
-    export ROS_MASTER_URI="http://192.168.129.$((149 + 2*$1)):11311"
     echo "Set ROS_MASTER_URI to ${ROS_MASTER_URI}"
   fi
 }
