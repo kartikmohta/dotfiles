@@ -1,31 +1,21 @@
 set nocompatible
 filetype off
 
-" dein.vim
-" Required:
-set runtimepath+=/home/kartikmohta/.vim/bundle/repos/github.com/Shougo/dein.vim
+" Specify a directory for plugins
+" Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-" Required:
-if dein#load_state('/home/kartikmohta/.vim/bundle')
-  call dein#begin('/home/kartikmohta/.vim/bundle')
+Plug 'antoyo/vim-licenses'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'sheerun/vim-polyglot'
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('/home/kartikmohta/.vim/bundle/repos/github.com/Shougo/dein.vim')
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --system-boost --ninja'}
+Plug 'Chiel92/vim-autoformat'
+Plug 'chaoren/vim-wordmotion'
 
-  " Add or remove your plugins here:
-  call dein#add('antoyo/vim-licenses')
-  call dein#add('vim-scripts/DoxygenToolkit.vim')
-  call dein#add('sheerun/vim-polyglot')
+" Initialize plugin system
+call plug#end()
 
-  call dein#add('Valloric/YouCompleteMe', {'build': './install.py --clang-completer --system-boost --system-libclang --ninja --clang-tidy --rust-completer'})
-  call dein#add('Chiel92/vim-autoformat')
-  call dein#add('chaoren/vim-wordmotion')
-
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
 
 if has('nvim') || has('termguicolors')
   set termguicolors
@@ -176,6 +166,7 @@ let g:ycm_collect_identifiers_from_tags_files = 0
 " map <C-]> :YcmCompleter GoToImprecise<CR>
 let g:ycm_path_to_python_interpreter="/usr/bin/python"
 let g:ycm_global_ycm_extra_conf="/home/kartikmohta/.ycm_extra_conf.py"
+let g:ycm_use_clangd = 0
 
 " Make Vim recognize XTerm escape sequences for Arrow keys combined with
 " modifiers such as Shift, Control, and Alt.  See http://superuser.com/a/402084.

@@ -131,7 +131,7 @@ export CXXFLAGS="-march=native -mtune=native -pipe -fstack-protector-strong -fno
 export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,--no-undefined,-z,relro,-z,now,--hash-style=gnu -pthread"
 
 # ROS
-ROSDISTRO=lunar
+ROSDISTRO=melodic
 if [ -f /opt/ros/$ROSDISTRO/setup.bash ]; then
   source /opt/ros/$ROSDISTRO/setup.bash
   export ROS_WORKSPACE=$HOME/programs/ros
