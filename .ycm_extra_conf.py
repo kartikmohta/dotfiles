@@ -34,8 +34,9 @@ import ycm_core
 flags = [
     '-x',
     'c++',
-    '-I/opt/ros/melodic/include',
-    '-I/usr/include/eigen3',
+    '-isystem', '/opt/ros/melodic/include',
+    '-isystem', '/usr/include/eigen3',
+    '-isystem', '/usr/include/opencv4',
     '-I./include',
     '-I../include',
     '-Wall',
@@ -139,3 +140,11 @@ def FlagsForFile( filename, **kwargs ):
     'do_cache': True
   }
 
+def Settings( **kwargs ):
+    language = kwargs[ 'language' ]
+    if language == 'cfamily':
+        return {
+            'flags': flags
+        }
+
+    return {}
