@@ -167,16 +167,18 @@ let g:ycm_collect_identifiers_from_tags_files = 0
 let g:ycm_global_ycm_extra_conf="/home/kartikmohta/.ycm_extra_conf.py"
 let g:ycm_disable_for_files_larger_than_kb = 200
 let g:ycm_max_diagnostics_to_display = 100
-let g:ycm_clangd_args = ['--clang-tidy-checks=-*,bugprone-*,modernize-*,performance-*,-modernize-use-trailing-return-type']
-
-" Make Vim recognize XTerm escape sequences for Arrow keys combined with
-" modifiers such as Shift, Control, and Alt.  See http://superuser.com/a/402084.
-if &term =~ '^screen'
-  execute "set <xUp>=\e[1;*A"
-  execute "set <xDown>=\e[1;*B"
-  execute "set <xRight>=\e[1;*C"
-  execute "set <xLeft>=\e[1;*D"
-endif
+" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
+let g:ycm_clangd_args = [ '--clang-tidy-checks=
+      \-*,
+      \bugprone-*,
+      \modernize-*,
+      \performance-*,
+      \-modernize-use-trailing-return-type,
+      \-modernize-avoid-c-arrays,
+      \' ]
 
 " Autoload Doxygen highlighting
 let g:load_doxygen_syntax = 1
