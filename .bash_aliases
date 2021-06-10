@@ -7,8 +7,6 @@ alias la='ls -A'
 alias l='ls -CF'
 alias df="df -Th"
 
-alias matlabnd="matlab -nodesktop -nosplash"
-
 alias rqt_reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
 alias rqt_runtime_monitor="rosrun rqt_runtime_monitor rqt_runtime_monitor"
 

@@ -15,6 +15,7 @@
   co = checkout
   di = diff
   ci = commit
+  br = branch
 [core]
   excludesfile = /home/kartikmohta/.gitignore
 [sendemail]
@@ -29,3 +30,9 @@
   renames = copies
 [submodule]
   recurse = true
+[pull]
+  ff = only
+[rebase]
+  autosquash = true
+[branch]
+  sort = -committerdate

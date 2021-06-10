@@ -138,7 +138,7 @@ if [ -f /opt/ros/$ROSDISTRO/setup.bash ]; then
 fi
 unset ROSDISTRO
 
-export ROS_IP=$(my_ip)
+#export ROS_IP=$(my_ip)
 if [[ ${ROS_IP} = "" ]]; then
   unset ROS_IP
 fi
@@ -148,7 +148,6 @@ if [ -f /usr/local/bin/mex ]; then
   export MATLAB_ROOT="/opt/MATLAB/R2017a"
   export MEX="/usr/local/bin/mex"
 fi
-
 
 # Gazebo
 if [ -f /usr/share/gazebo/setup.sh ]; then

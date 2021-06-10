@@ -42,6 +42,7 @@ set shiftround
 set ttimeout
 set ttimeoutlen=50
 set incsearch
+set inccommand=nosplit
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
@@ -102,7 +103,7 @@ endif
 " http://stackoverflow.com/questions/356126/how-can-you-automatically-remove-trailing-whitespace-in-vim/1618401#1618401
 fun! <SID>StripTrailingWhitespaces()
   " Only strip if the b:noStripeWhitespace variable isn't set
-  if exists('b:noStripWhitespace')
+  if exists('b:noStripWhitespace') || &binary
     return
   endif
 
@@ -163,7 +164,7 @@ noremap <C-K> :Autoformat<CR>
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 0
-" map <C-P> :YcmCompleter GoToImprecise<CR>
+map <C-P> :YcmCompleter GoToImprecise<CR>
 let g:ycm_global_ycm_extra_conf="/home/kartikmohta/.ycm_extra_conf.py"
 let g:ycm_disable_for_files_larger_than_kb = 200
 let g:ycm_max_diagnostics_to_display = 100
@@ -171,14 +172,13 @@ let g:ycm_max_diagnostics_to_display = 100
 let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = exepath("clangd")
-let g:ycm_clangd_args = [ '--clang-tidy-checks=
-      \-*,
+let g:ycm_clangd_args = [ '--clang-tidy-checks=-*,
       \bugprone-*,
       \modernize-*,
       \performance-*,
       \-modernize-use-trailing-return-type,
-      \-modernize-avoid-c-arrays,
-      \' ]
+      \-modernize-avoid-c-arrays',
+      \'--header-insertion=never' ]
 
 " Autoload Doxygen highlighting
 let g:load_doxygen_syntax = 1
