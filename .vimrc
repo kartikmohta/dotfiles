@@ -164,10 +164,11 @@ noremap <C-K> :Autoformat<CR>
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 0
-map <C-P> :YcmCompleter GoToImprecise<CR>
+map <C-P> :vertical YcmCompleter GoToImprecise<CR>
 let g:ycm_global_ycm_extra_conf="/home/kartikmohta/.ycm_extra_conf.py"
 let g:ycm_disable_for_files_larger_than_kb = 200
 let g:ycm_max_diagnostics_to_display = 100
+let g:ycm_goto_buffer_command = 'split-or-existing-window'
 " Let clangd fully control code completion
 let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
